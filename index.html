@@ -3,28 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Dubbing Landing</title>
+    <title>AI Dubbing - Your content, heard everywhere</title>
     <style>
-        .hero-title { font-size: clamp(2.8rem, 8vw, 4rem); }
-        .hero-sub { font-size: 20px; }
-        .step-text { font-size: 19px; }
-        .offer-desc { font-size: 18px; }
-        .lang-badge { font-size: 17px; }
-        .quote-text { font-size: 1.2rem; }
-        .footer-note { font-size: 16px; }
-        /* Proportional increase for other text sizes */
-        body { font-size: 1.1rem; } /* Increased base font size */
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --color-text-primary: #000;
+        --color-text-secondary: #666;
+        --color-text-tertiary: #999;
+        --color-background-primary: #fff;
+        --color-background-secondary: #f5f5f5;
+        --color-border-secondary: #ddd;
+        --color-border-tertiary: #eee;
+        --border-radius-md: 6px;
+        --border-radius-lg: 8px;
+      }
+
+      .page {
+        font-family: 'DM Sans', sans-serif;
+        color: var(--color-text-primary);
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 4rem;
+      }
+
+      .eyebrow {
+        font-size: 13px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--color-text-secondary);
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+      }
+
+      .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.8rem, 8vw, 4rem);
+        font-weight: 400;
+        line-height: 1.15;
+        margin-bottom: 1.25rem;
+        color: var(--color-text-primary);
+      }
+
+      .hero-title em {
+        font-style: italic;
+        color: var(--color-text-secondary);
+      }
+
+      .hero-sub {
+        font-size: 20px;
+        line-height: 1.7;
+        color: var(--color-text-secondary);
+        max-width: 520px;
+        margin-bottom: 2.5rem;
+        font-weight: 300;
+      }
+
+      .divider {
+        border: none;
+        border-top: 0.5px solid var(--color-border-tertiary);
+        margin: 2.5rem 0;
+      }
+
+      .how-label {
+        font-size: 13px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-text-tertiary);
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+      }
+
+      .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .step {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+
+      .step-num {
+        font-family: 'Playfair Display', serif;
+        font-size: 16px;
+        color: var(--color-text-tertiary);
+        min-width: 20px;
+        padding-top: 1px;
+      }
+
+      .step-text {
+        font-size: 19px;
+        color: var(--color-text-primary);
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      .step-text span {
+        color: var(--color-text-secondary);
+        font-weight: 300;
+      }
+
+      .offer-card {
+        background: var(--color-background-secondary);
+        border-radius: var(--border-radius-lg);
+        border: 0.5px solid var(--color-border-tertiary);
+        padding: 1.5rem 1.75rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .offer-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+      }
+
+      .offer-desc {
+        font-size: 18px;
+        color: var(--color-text-secondary);
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+        font-weight: 300;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag {
+        font-size: 14px;
+        padding: 4px 12px;
+        border-radius: 99px;
+        border: 0.5px solid var(--color-border-secondary);
+        color: var(--color-text-secondary);
+        font-weight: 400;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .cta-primary {
+        background: var(--color-text-primary);
+        color: var(--color-background-primary);
+        border: none;
+        padding: 12px 28px;
+        border-radius: var(--border-radius-md);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: opacity 0.15s;
+      }
+
+      .cta-primary:hover { opacity: 0.85; }
+
+      .cta-secondary {
+        font-size: 16px;
+        color: var(--color-text-secondary);
+        font-weight: 400;
+        cursor: pointer;
+        background: none;
+        border: none;
+        font-family: 'DM Sans', sans-serif;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .langs {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .lang-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 17px;
+        color: var(--color-text-secondary);
+        font-weight: 300;
+      }
+
+      .lang-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--color-text-tertiary);
+      }
+
+      .quote {
+        border-left: 2px solid var(--color-border-secondary);
+        padding-left: 1.25rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .quote-text {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        font-style: italic;
+        color: var(--color-text-secondary);
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+      }
+
+      .quote-attr {
+        font-size: 14px;
+        color: var(--color-text-tertiary);
+        font-weight: 400;
+      }
+
+      .footer-note {
+        font-size: 16px;
+        color: var(--color-text-tertiary);
+        line-height: 1.6;
+        font-weight: 300;
+      }
     </style>
 </head>
 <body>
-    <h1 class="hero-title">Welcome to AI Dubbing</h1>
-    <p class="hero-sub">Your one-stop solution for dubbing needs</p>
-    <div class="step-text">Follow these steps to get started...</div>
-    <div class="offer-desc">Check out our offers and pricing!</div>
-    <span class="lang-badge">Available languages</span>
-    <blockquote class="quote-text">Hear it to believe it!</blockquote>
-    <footer>
-        <p class="footer-note">© 2026 AI Dubbing, All Rights Reserved.</p>
-    </footer>
+<div class="page">
+  <p class="eyebrow">AI-assisted dubbing &nbsp;·&nbsp; EN ↔ FR</p>
+
+  <h1 class="hero-title">Your content,<br><em>heard everywhere.</em></h1>
+
+  <p class="hero-sub">Real voice. Real emotion. Delivered in 48 hours — not 3 weeks. I'm a bilingual actor using AI to make professional dubbing accessible to creators, educators, and brands.</p>
+
+  <div class="langs">
+    <div class="lang-badge"><div class="lang-dot"></div> English → French</div>
+    <div class="lang-badge"><div class="lang-dot"></div> French → English</div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="how-label">How it works</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <p class="step-text">Send me your video or audio file <span>— any format, any length.</span></p>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <p class="step-text">I record a natural, emotional performance in the target language <span>— adapted for tone, not just words.</span></p>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <p class="step-text">AI handles sync, timing, and polish <span>— I review everything before delivery.</span></p>
+    </div>
+    <div class="step">
+      <span class="step-num">04</span>
+      <p class="step-text">You receive a ready-to-publish file <span>— in 48 hours.</span></p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="offer-card">
+    <p class="offer-title">First video — on me.</p>
+    <p class="offer-desc">Let me dub one of your videos for free. No contract, no commitment. If you like what you hear, we talk about a simple ongoing package starting at €300 per video.</p>
+    <div class="tags">
+      <span class="tag">YouTube</span>
+      <span class="tag">Online courses</span>
+      <span class="tag">Podcasts</span>
+      <span class="tag">Ads</span>
+      <span class="tag">Documentaries</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p class="quote-text">"The goal isn't translation. It's making your audience feel like you made the video for them."
+    </p>
+    <p class="quote-attr">— AI Dubbing Artist</p>
+  </div>
+
+  <div class="cta-row">
+    <button class="cta-primary">Get your free video dubbed ↗</button>
+    <button class="cta-secondary">What else should this page have?</button>
+  </div>
+
+  <hr class="divider">
+
+  <p class="footer-note">Based in France &nbsp;·&nbsp; Available worldwide &nbsp;·&nbsp; Reply within 24h</p>
+</div>
 </body>
 </html>
