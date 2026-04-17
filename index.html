@@ -21,6 +21,27 @@
         --border-radius-lg: 8px;
       }
 
+      .lang-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 13px;
+        color: var(--color-text-tertiary);
+        background: var(--color-background-primary);
+        border: 0.5px solid var(--color-border-secondary);
+        border-radius: 99px;
+        padding: 5px 12px;
+        cursor: pointer;
+        letter-spacing: 0.05em;
+        transition: color 0.15s, border-color 0.15s;
+        z-index: 100;
+      }
+      .lang-toggle:hover {
+        color: var(--color-text-secondary);
+        border-color: var(--color-text-tertiary);
+      }
+
       .page {
         font-family: 'DM Sans', sans-serif;
         color: var(--color-text-primary);
@@ -230,102 +251,119 @@
         line-height: 1.6;
         font-weight: 300;
       }
-
-      /* Language toggle button */
-      .lang-toggle {
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        font-family: 'DM Sans', sans-serif;
-        font-size: 13px;
-        color: var(--color-text-tertiary);
-        background: none;
-        border: 0.5px solid var(--color-border-secondary);
-        border-radius: 99px;
-        padding: 5px 12px;
-        cursor: pointer;
-        letter-spacing: 0.05em;
-        transition: color 0.15s, border-color 0.15s;
-        z-index: 100;
-      }
-
-      .lang-toggle:hover {
-        color: var(--color-text-secondary);
-        border-color: var(--color-text-tertiary);
-      }
     </style>
 </head>
 <body>
 
-<button class="lang-toggle" onclick="switchLang()">EN</button>
+<button class="lang-toggle" id="langBtn" onclick="toggleLang()">EN</button>
 
 <div class="page">
-  <p class="eyebrow">Doublage assisté par IA &nbsp;·&nbsp; EN ↔ FR</p>
+  <p class="eyebrow" data-fr="Doublage assisté par IA &nbsp;·&nbsp; EN ↔ FR" data-en="AI-assisted dubbing &nbsp;·&nbsp; EN ↔ FR">Doublage assisté par IA &nbsp;·&nbsp; EN ↔ FR</p>
 
-  <h1 class="hero-title">Votre contenu,<br><em>entendu partout.</em></h1>
+  <h1 class="hero-title">
+    <span data-fr="Votre contenu," data-en="Your content,">Votre contenu,</span><br>
+    <em data-fr="entendu partout." data-en="heard everywhere.">entendu partout.</em>
+  </h1>
 
-  <p class="hero-sub">Une vraie voix. Une vraie émotion. Livré en 48 heures — pas en 3 semaines. Je suis un acteur bilingue qui utilise l'IA pour rendre le doublage professionnel accessible aux créateurs, aux formateurs et aux marques.</p>
+  <p class="hero-sub"
+     data-fr="Une vraie voix. Une vraie émotion. Livré en 48 heures — pas en 3 semaines. Je suis un acteur bilingue qui utilise l'IA pour rendre le doublage professionnel accessible aux créateurs, éducateurs et marques."
+     data-en="Real voice. Real emotion. Delivered in 48 hours — not 3 weeks. I'm a bilingual actor using AI to make professional dubbing accessible to creators, educators, and brands.">
+    Une vraie voix. Une vraie émotion. Livré en 48 heures — pas en 3 semaines. Je suis un acteur bilingue qui utilise l'IA pour rendre le doublage professionnel accessible aux créateurs, éducateurs et marques.
+  </p>
 
   <div class="langs">
-    <div class="lang-badge"><div class="lang-dot"></div> Anglais → Français</div>
-    <div class="lang-badge"><div class="lang-dot"></div> Français → Anglais</div>
+    <div class="lang-badge">
+      <div class="lang-dot"></div>
+      <span data-fr="Anglais → Français" data-en="English → French">Anglais → Français</span>
+    </div>
+    <div class="lang-badge">
+      <div class="lang-dot"></div>
+      <span data-fr="Français → Anglais" data-en="French → English">Français → Anglais</span>
+    </div>
   </div>
 
   <hr class="divider">
 
-  <p class="how-label">Comment ça marche</p>
+  <p class="how-label" data-fr="Comment ça marche" data-en="How it works">Comment ça marche</p>
 
   <div class="steps">
     <div class="step">
       <span class="step-num">01</span>
-      <p class="step-text">Envoyez-moi votre fichier vidéo ou audio <span>— n'importe quel format, n'importe quelle durée.</span></p>
+      <p class="step-text">
+        <span data-fr="Envoyez-moi votre fichier vidéo ou audio " data-en="Send me your video or audio file ">Envoyez-moi votre fichier vidéo ou audio </span><span data-fr="— n'importe quel format, n'importe quelle durée." data-en="— any format, any length.">— n'importe quel format, n'importe quelle durée.</span>
+      </p>
     </div>
     <div class="step">
       <span class="step-num">02</span>
-      <p class="step-text">J'enregistre une performance naturelle et émotionnelle dans la langue cible <span>— adaptée au ton, pas seulement aux mots.</span></p>
+      <p class="step-text">
+        <span data-fr="J'enregistre une performance naturelle et émotionnelle dans la langue cible " data-en="I record a natural, emotional performance in the target language ">J'enregistre une performance naturelle et émotionnelle dans la langue cible </span><span data-fr="— adaptée au ton, pas seulement aux mots." data-en="— adapted for tone, not just words.">— adaptée au ton, pas seulement aux mots.</span>
+      </p>
     </div>
     <div class="step">
       <span class="step-num">03</span>
-      <p class="step-text">L'IA gère la synchronisation, le rythme et les finitions <span>— je vérifie tout avant la livraison.</span></p>
+      <p class="step-text">
+        <span data-fr="L'IA gère la synchronisation, le rythme et les finitions " data-en="AI handles sync, timing, and polish ">L'IA gère la synchronisation, le rythme et les finitions </span><span data-fr="— je vérifie tout avant la livraison." data-en="— I review everything before delivery.">— je vérifie tout avant la livraison.</span>
+      </p>
     </div>
     <div class="step">
       <span class="step-num">04</span>
-      <p class="step-text">Vous recevez un fichier prêt à publier <span>— en 48 heures.</span></p>
+      <p class="step-text">
+        <span data-fr="Vous recevez un fichier prêt à publier " data-en="You receive a ready-to-publish file ">Vous recevez un fichier prêt à publier </span><span data-fr="— en 48 heures." data-en="— in 48 hours.">— en 48 heures.</span>
+      </p>
     </div>
   </div>
 
   <hr class="divider">
 
   <div class="offer-card">
-    <p class="offer-title">Première vidéo — offerte.</p>
-    <p class="offer-desc">Laissez-moi doubler l'une de vos vidéos gratuitement. Sans contrat, sans engagement. Si le résultat vous plaît, on discute d'un forfait simple à partir de 300 € par vidéo.</p>
+    <p class="offer-title" data-fr="Première vidéo — offerte." data-en="First video — on me.">Première vidéo — offerte.</p>
+    <p class="offer-desc"
+       data-fr="Laissez-moi doubler l'une de vos vidéos gratuitement. Sans contrat, sans engagement. Si le résultat vous plaît, on discute d'un forfait simple à partir de 300 € par vidéo."
+       data-en="Let me dub one of your videos for free. No contract, no commitment. If you like what you hear, we talk about a simple ongoing package starting at €300 per video.">
+      Laissez-moi doubler l'une de vos vidéos gratuitement. Sans contrat, sans engagement. Si le résultat vous plaît, on discute d'un forfait simple à partir de 300 € par vidéo.
+    </p>
     <div class="tags">
       <span class="tag">YouTube</span>
-      <span class="tag">Cours en ligne</span>
+      <span class="tag" data-fr="Cours en ligne" data-en="Online courses">Cours en ligne</span>
       <span class="tag">Podcasts</span>
-      <span class="tag">Publicités</span>
-      <span class="tag">Documentaires</span>
+      <span class="tag" data-fr="Publicités" data-en="Ads">Publicités</span>
+      <span class="tag" data-fr="Documentaires" data-en="Documentaries">Documentaires</span>
     </div>
   </div>
 
   <div class="quote">
-    <p class="quote-text">« L'objectif n'est pas la traduction. C'est de faire ressentir à votre audience que vous avez créé la vidéo pour elle. »</p>
-    <p class="quote-attr">— Artiste en doublage IA</p>
+    <p class="quote-text"
+       data-fr="« L'objectif n'est pas la traduction. C'est de faire ressentir à votre audience que vous avez créé la vidéo pour elle. »"
+       data-en="&ldquo;The goal isn't translation. It's making your audience feel like you made the video for them.&rdquo;">
+      « L'objectif n'est pas la traduction. C'est de faire ressentir à votre audience que vous avez créé la vidéo pour elle. »
+    </p>
+    <p class="quote-attr">— AI Dubbing Artist</p>
   </div>
 
   <div class="cta-row">
-    <button class="cta-primary">Faire doubler ma vidéo gratuitement ↗</button>
-    <button class="cta-secondary">Qu'est-ce qui manque sur cette page ?</button>
+    <button class="cta-primary" data-fr="Faire doubler ma vidéo gratuitement ↗" data-en="Get your free video dubbed ↗">Faire doubler ma vidéo gratuitement ↗</button>
+    <button class="cta-secondary" data-fr="Qu'est-ce qui manque sur cette page ?" data-en="What else should this page have?">Qu'est-ce qui manque sur cette page ?</button>
   </div>
 
   <hr class="divider">
 
-  <p class="footer-note">Basé en France &nbsp;·&nbsp; Disponible dans le monde entier &nbsp;·&nbsp; Réponse sous 24h</p>
+  <p class="footer-note"
+     data-fr="Basé en France &nbsp;·&nbsp; Disponible dans le monde entier &nbsp;·&nbsp; Réponse sous 24h"
+     data-en="Based in France &nbsp;·&nbsp; Available worldwide &nbsp;·&nbsp; Reply within 24h">
+    Basé en France &nbsp;·&nbsp; Disponible dans le monde entier &nbsp;·&nbsp; Réponse sous 24h
+  </p>
 </div>
 
 <script>
-  function switchLang() {
-    window.location.href = 'index-en.html';
+  var currentLang = 'fr';
+
+  function toggleLang() {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    document.getElementById('langBtn').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+    document.documentElement.lang = currentLang;
+    document.querySelectorAll('[data-fr]').forEach(function(el) {
+      el.innerHTML = el.getAttribute('data-' + currentLang);
+    });
   }
 </script>
 
